@@ -15,6 +15,8 @@ http://caseyyee.github.io/vr-skybox/build/index.html
 
 * Oculus rift HMD (confirmed working with DK1).
 
+* Keys:  "f" for VR view.
+
 
 #### Installation:
 
