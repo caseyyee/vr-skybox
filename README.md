@@ -2,6 +2,10 @@
 ------------
 Skybox example built using basic VR enabled HTML.
 
+http://caseyyee.github.io/vr-skybox/build/index.html
+
+
+------------
 
 #### To run this example, you will need:
 
