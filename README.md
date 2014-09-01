@@ -1,7 +1,7 @@
-## VR Tour concept
+## VR Skybox
 ------------
 
-http://caseyyee.github.io/vr-browse/build/index.html
+http://caseyyee.github.io/vr-skybox/build/index.html
 
 
 ------------
@@ -17,7 +17,7 @@ http://caseyyee.github.io/vr-browse/build/index.html
 
 #### Installation:
 
-1. Clone this repo `git clone git@github.com:caseyyee/vr-browse.git`
+1. Clone this repo `git clone git@github.com:caseyyee/vr-skybox.git`
 
 2. Install npm dependencies: `npm install`
 
