@@ -1,0 +1,34 @@
+extends layouts/master
+
+block content
+	#container.container
+		#camera.threed(style='transform: translate3d(0px, -150px, 0px) rotateZ(180deg) rotateY(180deg)')
+		
+			#sky.threed
+				.skybox-side.skybox-front.threed(style='background-image: url("images/sky/front.jpg")') 
+				.skybox-side.skybox-left.threed(style='background-image: url("images/sky/left.jpg")') 
+				.skybox-side.skybox-right.threed(style='background-image: url("images/sky/right.jpg")') 
+				.skybox-side.skybox-back.threed(style='background-image: url("images/sky/back.jpg")') 
+				.skybox-side.skybox-bottom.threed(style='background-image: url("images/sky/bottom.jpg")') 
+				.skybox-side.skybox-top.threed(style='background-image: url("images/sky/top.jpg")') 
+
+	#splash
+		.splash-title
+			h1 WebVR
+			h2 Skybox demo
+
+			div.splash-key-container
+				button.splash-key V
+				span.splash-key-label Start VR mode.
+			
+			div.splash-key-container
+				button.splash-key Z
+				span.splash-key-label Zero position.
+
+			div.splash-key-container
+				button.splash-key M
+				span.splash-key-label Toggle mouse-look.
+
+			
+
+			
