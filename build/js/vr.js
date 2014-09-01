@@ -8,7 +8,7 @@ function matrixFromOrientation(q, inverse) {
 
   // if inverse is given, invert the quaternion first
   if (inverse) {
-    x = -x; y = -y; z = -z;
+    x = x; y = -y; z = z;
     var l = Math.sqrt(x*x + y*y + z*z + w*w);
     if (l == 0) {
       x = y = z = 0;
@@ -63,10 +63,15 @@ var cssCamera;
 
 // the camera's position, as a css transform string.  For right now,
 // we want it just in the middle.
-// XXX BUG this rotateZ should not be needed; the view rendering is flipped.
-// XXX BUG the rotateY should not be needed; the default viewport
-// is not oriented how I expected it to be oriented
-var cssCameraPositionTransform = "translate3d(0, 0, 0) rotateZ(180deg) rotateY(180deg)";
+var cssCameraPositionTransform = "translate3d(0, 0, 0) rotateY(-180deg) scaleX(-1)";
+
+
+var mouseLook = false;
+var clientWidth = document.body.clientWidth;
+var clientHeight = document.body.clientHeight;
+var mouseMaxY = 180;  // max deg movement in X direction of mouse.
+var mouseMaxX = 90;   // max deg movement in Y direction of mouse.
+var mouseDegY, mouseDegX;
 
 
 function frameCallback() {
@@ -79,11 +84,16 @@ function frameCallback() {
 
   window.requestAnimationFrame(frameCallback);
 
-  var state = vrSensor.getState();
-  var cssOrientationMatrix = cssMatrixFromOrientation(state.orientation, true);
+  if (vrSensor !== undefined) {
+    var state = vrSensor.getState();
+    var cssOrientationMatrix = cssMatrixFromOrientation(state.orientation, true);
+  }
 
-  cssCamera.style.transform = cssOrientationMatrix + " " + cssCameraPositionTransform;
-
+  if (mouseLook) {
+    cssCamera.style.transform = 'translate3d(0, 0, 0) rotateX('+mouseDegX*-1+'deg) rotateY('+mouseDegY+'deg) scaleX(-1)';
+  } else {
+    cssCamera.style.transform = cssOrientationMatrix + " " + cssCameraPositionTransform;  
+  }
 }
 
 function vrDeviceCallback(vrdevs) {
@@ -95,8 +105,9 @@ function vrDeviceCallback(vrdevs) {
     }
   }
 
-  if (!vrHMD)
+  if (!vrHMD) 
     return;
+    
 
   // Then, find that HMD's position sensor
   for (var i = 0; i < vrdevs.length; ++i) {
@@ -117,13 +128,24 @@ function vrDeviceCallback(vrdevs) {
 }
 
 function onkey(event) {
-  switch (String.fromCharCode(event.charCode)) {
-  case 'f':
+  console.log(event.key);
+  switch (event.key) {
+  case 'v':
     cssContainer.mozRequestFullScreen({ vrDisplay: vrHMD });
     break;
   case 'z':
     vrSensor.zeroSensor();
     break;
+  case 'm': // toggle mouse look
+    mouseLook = (mouseLook == true ? mouseLook = false : mouseLook = true);
+    break;
+  }
+}
+
+function onmousemove(e) {
+  if (mouseLook) {
+    mouseDegY = (e.clientX - clientWidth)/(clientWidth/2/mouseMaxY);
+    mouseDegX = (e.clientY - (clientHeight/2))/(clientHeight/2/mouseMaxX);
   }
 }
 
@@ -131,9 +153,16 @@ function init() {
   cssCamera = document.getElementById("camera");
   cssContainer = document.getElementById("container");
 
-  if (navigator.getVRDevices)
+  if (navigator.getVRDevices) {
     navigator.getVRDevices().then(vrDeviceCallback);
+  } else {
+    mouseLook = true;
+    requestAnimationFrame(frameCallback);
+  }
+
+  // bind events
+  window.addEventListener("keypress", onkey, true);
+  window.addEventListener("mousemove", onmousemove);
 }
 
 window.addEventListener("load", init, false);
-window.addEventListener("keypress", onkey, true);
