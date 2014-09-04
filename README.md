@@ -5,12 +5,12 @@ http://caseyyee.github.io/vr-skybox/build/index.html
 
 
 ------------
-
 #### To run this example, you will need:
 
 * Latest firefox VR enabled builds.
+    Download, install and run using: http://ftp.mozilla.org/pub/mozilla.org/firefox/try-builds/vladimir@pobox.com-00560d154385/try-macosx64/firefox-34.0a1.en-US.mac.dmg
 
-    Find out and install builds available from vlads post here: http://blog.bitops.com/blog/2014/08/20/updated-firefox-vr-builds/
+    More information about VR enabled FF build here: http://blog.bitops.com/blog/2014/08/20/updated-firefox-vr-builds/
 
 * Oculus rift HMD (confirmed working with DK1).
 
