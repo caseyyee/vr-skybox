@@ -63,7 +63,7 @@ var cssCamera;
 
 // the camera's position, as a css transform string.  For right now,
 // we want it just in the middle.
-var cssCameraPositionTransform = "translate3d(0, 0, 0) rotateY(-180deg) scaleX(-1)";
+var cssCameraPositionTransform = "translate3d(0, 0, 0)";
 
 
 var mouseLook = false;

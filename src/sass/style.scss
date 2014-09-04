@@ -115,30 +115,37 @@ html, body {
 
 // Skybox
 $skybox-size: 800px;
-.skybox-side {
+$skybox-inset: 4px; // how many pixels inset to hide seams in skybox.
+
+#sky {
   width: $skybox-size;
   height: $skybox-size;
-  transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%,-50%);
+}
+
+.skybox-side {
+  width: $skybox-size+($skybox-inset*2);
+  height: $skybox-size+($skybox-inset*2);
   background-size: 100% 100%;
   text-align: center;
 }
 .skybox-front {
-  transform: translate3d($skybox-size/2*-1,$skybox-size/2*-1,$skybox-size/2);
+  transform: translate3d(0,0,($skybox-size/2*-1)+$skybox-inset);
 }
 .skybox-left {
-  transform: translate3d($skybox-size*-1,$skybox-size/2*-1,0) rotateY(-90deg);
+  transform: translate3d(($skybox-size/2*-1)+$skybox-inset,0,0) rotateY(90deg);
 }
 .skybox-right {
-  transform: translate3d(0,$skybox-size/2*-1,0) rotateY(90deg);
+  transform: translate3d(($skybox-size/2)-$skybox-inset,0,0) rotateY(-90deg);
 }
 .skybox-back {
-  transform: translate3d($skybox-size/2*-1,$skybox-size/2*-1,$skybox-size/2*-1 + 2px) rotateY(180deg);  
+  transform: translate3d(0,0,($skybox-size/2)-$skybox-inset) rotateY(180deg);
 }
 .skybox-bottom {
-  transform: translate3d($skybox-size/2*-1,0,0) rotateX(90deg);  
+  transform: translate3d(0,($skybox-size/2)-$skybox-inset,0) rotateX(90deg);
 }
 .skybox-top {
-  transform: translate3d($skybox-size/2*-1,$skybox-size*-1 + 2px,0) rotateX(90deg);  
+  transform: translate3d(0,($skybox-size/2*-1)-$skybox-inset,0) rotateX(-90deg);
 }
 
 

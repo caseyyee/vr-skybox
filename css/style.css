@@ -116,46 +116,52 @@ html, body {
   border: 5px solid blue;
 }
 
-/* line 118, ../src/sass/style.scss */
-.skybox-side {
+/* line 120, ../src/sass/style.scss */
+#sky {
   width: 800px;
   height: 800px;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%);
+}
+
+/* line 126, ../src/sass/style.scss */
+.skybox-side {
+  width: 808px;
+  height: 808px;
   background-size: 100% 100%;
   text-align: center;
 }
 
-/* line 125, ../src/sass/style.scss */
+/* line 132, ../src/sass/style.scss */
 .skybox-front {
-  transform: translate3d(-400px, -400px, 400px);
+  transform: translate3d(0, 0, -396px);
 }
 
-/* line 128, ../src/sass/style.scss */
+/* line 135, ../src/sass/style.scss */
 .skybox-left {
-  transform: translate3d(-800px, -400px, 0) rotateY(-90deg);
+  transform: translate3d(-396px, 0, 0) rotateY(90deg);
 }
 
-/* line 131, ../src/sass/style.scss */
+/* line 138, ../src/sass/style.scss */
 .skybox-right {
-  transform: translate3d(0, -400px, 0) rotateY(90deg);
+  transform: translate3d(396px, 0, 0) rotateY(-90deg);
 }
 
-/* line 134, ../src/sass/style.scss */
+/* line 141, ../src/sass/style.scss */
 .skybox-back {
-  transform: translate3d(-400px, -400px, -398px) rotateY(180deg);
+  transform: translate3d(0, 0, 396px) rotateY(180deg);
 }
 
-/* line 137, ../src/sass/style.scss */
+/* line 144, ../src/sass/style.scss */
 .skybox-bottom {
-  transform: translate3d(-400px, 0, 0) rotateX(90deg);
-}
-
-/* line 140, ../src/sass/style.scss */
-.skybox-top {
-  transform: translate3d(-400px, -798px, 0) rotateX(90deg);
+  transform: translate3d(0, 396px, 0) rotateX(90deg);
 }
 
 /* line 147, ../src/sass/style.scss */
+.skybox-top {
+  transform: translate3d(0, -404px, 0) rotateX(-90deg);
+}
+
+/* line 154, ../src/sass/style.scss */
 .is-hidden {
   display: none !important;
 }
